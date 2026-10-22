@@ -33,7 +33,7 @@ var Kn = (s) => JSON.parse(JSON.stringify(s)),
   };
 function validateProject(s, e) {
   if (!s || s.format !== "armature-project" || s.version !== 1)
-    throw Error("Choose an Armature project JSON (version 1).");
+    throw Error("Choose a DOF project JSON (version 1).");
   let t = Kn(s);
   if (
     ((t.name = Ys(t.name, "Project name")),

@@ -61,7 +61,7 @@ function mountSimulation(panel) {
   <div style="max-width:600px;">
     <h2 style="color:var(--dof-text-hi);margin-bottom:16px;">Simulation Studio</h2>
     <p style="color:var(--dof-text-md);margin-bottom:8px;">
-      The full ARMATURE robot simulation is available as a separate self-contained page.
+      The full DOF robot simulation is available as a separate self-contained page.
       It includes Three.js + Cannon-ES physics, Franka Panda, SO-101, UR5e and xArm 6 robots,
       kitting cell scene, LeRobot v3 dataset recording, stress testing and CEM reach training.
     </p>

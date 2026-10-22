@@ -2251,3 +2251,4 @@ if (!globalThis.ARMATURE_TEST) {
 }
 
 if (!globalThis.ARMATURE_TEST) workspaceComfort = createWorkspaceComfort();
+window.dof = window.armature;

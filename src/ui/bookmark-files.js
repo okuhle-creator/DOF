@@ -31,7 +31,7 @@ export function encodeBookmarks(entries, env) {
 }
 export function decodeBookmarks(value, env, existing) {
   if (!value || value.format !== "armature-bookmarks" || value.version !== 1)
-    throw Error("Expected an ARMATURE bookmarks version 1 file.");
+    throw Error("Expected a DOF bookmarks version 1 file.");
   if (value.robotId !== env.model.id)
     throw Error("Select the file's robot before importing: " + value.robotId);
   if (
