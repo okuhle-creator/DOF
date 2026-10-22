@@ -1,82 +1,116 @@
-# ARMATURE
+# DOF — Degrees of Freedom
+### Intelligence in Action
 
-**Build a robot workspace. Teach a task. Inspect what happened.**
+> **A unified AI and robotics experimentation platform for simulating intelligent systems, evaluating algorithms, and studying how agents perceive, learn, and act.**
 
-ARMATURE is a browser-based robotics studio for scene authoring, demonstration recording, and repeatable experiments. Set up a kitting cell, compose a pick-and-place sequence, capture camera observations, and inspect failures—all in a single self-contained page.
+[![Deploy DOF to GitHub Pages](https://github.com/arpitg1304/armature/actions/workflows/deploy.yml/badge.svg)](https://github.com/arpitg1304/armature/actions/workflows/deploy.yml)
+[![License: GPL-3.0-only](https://img.shields.io/badge/License-GPL--3.0--only-blue.svg)](LICENSE)
 
-**[Launch the simulator →](https://arpitg1304.github.io/armature/)** · [Architecture](docs/architecture.md) · [Validation](docs/validation.md)
+DOF (Degrees of Freedom) is a browser-first, deep-tech software platform for embodied AI, robotics simulation, machine learning, and autonomous systems. Built on the open-source **ARMATURE** robotics engine, DOF integrates 3D robotic arm simulation, 2D motion planning, reinforcement learning, browser-based neural perception, experiment management, and real-data analytics into a single self-contained application.
 
-![ARMATURE running a Franka Panda robot in its kitting cell, with task controls and camera views](docs/images/armature-studio.png)
+**[🚀 Launch Live Platform](https://arpitg1304.github.io/armature/)** · **[🤖 Simulation Studio](https://arpitg1304.github.io/armature/robotics-arm-studio.html)** · [Architecture](docs/architecture.md) · [Validation](docs/validation.md)
 
-### From workbench to experiment
+---
 
-| Create | Run | Understand |
-| --- | --- | --- |
-| Arrange parts, targets, and fixtures with scene editing and undo. | Compose task stages or take over manually to record demonstrations. | Scrub recordings and inspect failed stress trials. |
-| Choose Panda, SO-101, UR5e, or xArm 6. | Try kitting, transfer, sorting, stacking, insertion, and lighting tasks. | Compare seeded trial sweeps and reproduce individual rollouts. |
-| Import static objects and configure cameras and lighting. | Export demonstrations in a LeRobot v3-style dataset layout. | Capture RGB and separate synthetic depth/instance snapshots. |
+## Brand & Trademark Notice
+*DOF* is used solely as an academic and portfolio project identity ("Degrees of Freedom", referencing physical and mechanical axes of motion in robotics). This project does not claim trademark ownership, commercial availability, or affiliation with DOF Robotics or any other commercial entity.
 
-The studio opens on a **Franka Panda in a Blender-built kitting cell**; switch to SO-101, UR5e, or xArm 6 from the robot selector. Robot assets, scenery, styles, code, and simulation workers are embedded in the generated HTML. Download the page and run the core simulator offline—no application server or Blender installation required.
+---
 
-### Try a first task
+## Core Platform Modules
 
-1. [Open ARMATURE](https://arpitg1304.github.io/armature/) in a browser with WebGL enabled.
-2. Choose **Kitting cell / SO-101 / Pack a parts kit** and run the task.
-3. Explore **Demonstrate** to record an episode, **Cameras** to inspect observations, or **Tools** to run stress trials.
-4. Change the layout or experiment settings and compare the result.
+```
+       ┌─────────────────────────────────────────────────────────────┐
+       │                DOF — DEGREES OF FREEDOM                     │
+       └──────────────────────────────┬──────────────────────────────┘
+                                      │
+  ┌─────────────────┬─────────────────┼─────────────────┬─────────────────┐
+  │                 │                 │                 │                 │
+┌─▼──────────────┐┌─▼──────────────┐┌─▼──────────────┐┌─▼──────────────┐┌─▼──────────────┐
+│  Simulation    ││  Motion        ││  Agent &        ││  Perception   ││  Experiment    │
+│  Studio        ││  Planning      ││  Policy Lab     ││  Lab          ││  Manager       │
+│  Three.js +    ││  A* grid       ││  Tabular        ││  ONNX Runtime ││  IndexedDB     │
+│  Cannon-ES     ││  search +      ││  Q-learning +   ││  Web (WASM/   ││  persistence,  │
+│  Panda, SO-101 ││  heuristics    ││  baselines      ││  WebGPU)      ││  JSON/CSV      │
+└────────────────┘└────────────────┘└────────────────┘└────────────────┘└────────────────┘
+```
 
-### Bookmarks and workspace views
+1. **Simulation Studio**: Full 3D kinematic and experimental dynamic robot arm simulation (Franka Panda 7-DOF, SO-101 5-DOF, UR5e 6-DOF, xArm 6 6-DOF). Real-time collision proxies, kitting cell, camera rigs (RGB feeds), and LeRobot v3 Parquet dataset capture.
+2. **Motion Planning & Navigation**: Interactive A* grid search with customizable start/goal, obstacle placement, 4- and 8-directional routing, octile/Manhattan heuristics, and explored-node metrics.
+3. **Agent & Policy Lab**: Reproducible 10×10 GridWorld environment. Includes Tabular Q-learning with ε-decay, greedy Manhattan baseline, random baseline, live training charts, and policy-arrow overlays.
+4. **Perception Lab**: Client-side neural vision inference via ONNX Runtime Web (WASM & WebGPU). Test real models (e.g., MobileNetV2 ImageNet-1K) on uploaded or sample images with genuine class probabilities and timings.
+5. **Experiment Manager**: Create, configure, execute, and compare multi-trial experiments. Stored locally in browser IndexedDB. Full JSON config import/export and CSV results export.
+6. **Analytics & Evaluation**: Honest metric visualization. Plots success rates, average rewards, and trial outcome distributions derived exclusively from real trial runs.
+7. **Model Registry**: Local catalogue tracking model formats, tasks, input/output tensors, preprocessing specs, and verified validation status.
+8. **Tutorials & Research Workspace**: Interactive walkthroughs explaining algorithms, theoretical assumptions, mathematical formulas (Bellman equations, A* admissibility), and honest limitations.
 
-In **Tools → Robot bookmarks**, name and save the current joint/gripper pose. Bookmarks are stored in this browser separately for each robot. **Move to pose** uses the existing kinematic servos; **Stop move** pauses it. These are joint-space moves, not collision-planned paths. Reset ended episodes before moving.
+---
 
-Use the **View** dropdown above the workspace to choose **Orbit**, **Front**, **Overhead**, **Gripper close-up**, or **Wide bench** to inspect the scene. **Restore view** returns to the view from before the first preset. Gripper is a snapshot of the current tool location, not a tracking camera. These controls do not change dataset cameras or recorded RGB.
+## Quickstart — Run Locally in 60 Seconds
 
-### Workspace comfort
-
-Drag the sidebar edge to resize it; double-click to restore its default width. Keyboard users can focus the divider and use arrow keys or Home. Sidebar width, visible panels, accordion sections, recorder expansion and collapsed thumbnails are remembered in this browser. Robot, task and experiment settings are not restored by this preference feature. **Tools → Reset workspace preferences** resets the layout without deleting bookmarks.
-
-Click a workspace camera thumbnail, or **Cameras → Enlarge camera preview**, to open a larger view. Switch between overhead and wrist cameras; Escape closes it and returns focus. This magnifies existing camera pixels without increasing recording resolution.
-
-In **Tools → Robot bookmarks**, rename the selected pose or export/import JSON for the selected robot. Imports validate the robot, joint names, units and servo limits before adding any poses. Name conflicts get an imported suffix; existing poses are never overwritten.
-
-### Run and develop locally
-
-Requires Node.js 22+.
+Requires **Node.js 22+**.
 
 ```sh
+# 1. Clone repository
+git clone https://github.com/arpitg1304/armature.git
+cd armature
+
+# 2. Install dependencies
 npm ci
-npm run build
+
+# 3. Build & start local development server
+npm start
 ```
 
-Open `dist/robotics-arm-studio.html`. Edit the modules in `src/` and rebuild; the generated page contains everything needed for the core simulator.
+Open your browser to:
+- **DOF Platform:** [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
+- **Simulation Studio:** [http://127.0.0.1:3000/robotics-arm-studio.html](http://127.0.0.1:3000/robotics-arm-studio.html)
+
+---
+
+## Easy Push & Run on GitHub
+
+The repository is pre-configured with a zero-configuration **GitHub Actions workflow** (`.github/workflows/deploy.yml`).
+
+### To deploy your own instance to GitHub Pages:
+1. **Push your code to GitHub:**
+   ```sh
+   git add .
+   git commit -m "Deploy DOF Day 10 finale"
+   git push origin main
+   ```
+2. **Enable GitHub Pages:**
+   - In your GitHub repo, go to **Settings** → **Pages**.
+   - Under **Build and deployment** → **Source**, select **GitHub Actions**.
+3. **Done!**
+   GitHub Actions will automatically run tests, build self-contained single-page bundles, and publish the site.
+
+---
+
+## Test & Build Commands
 
 ```sh
-npm test                 # source bindings, protocols, features, worker and task physics
-npm run test:browser     # Chrome: simulation, authoring, sensors, recording and research tasks
-npm run test:stress-ui   # Chrome: worker sweeps, export, replay and reproduction
-npm run build:pages      # create _site/index.html for static hosting
-npm run test:pages       # Chrome: check the deployed page layout and runtime
+npm run build         # Bundle dist/dof.html and dist/robotics-arm-studio.html
+npm test              # Run validation suite (source bindings, protocols, physics, worker)
+npm run build:pages   # Prepare _site/ distribution bundle for GitHub Pages
+npm run test:pages    # Playwright browser smoke test under project-path routing
+npm run serve         # Run local HTTP preview server without rebuilding
 ```
 
-GitHub Actions runs tests and a Chromium smoke check, then deploys successful pushes to `main`. See [deployment](docs/deployment.md) for details.
+---
 
-### What the simulator models
+## Technical Architecture & Limitations
 
-ARMATURE is an experiment and authoring prototype. Default robot motion uses **velocity-limited kinematic servos with approximate collision proxies**; movable objects use Cannon-es physics. This is not a validated torque-dynamics simulator, a MuJoCo-fidelity model, or evidence of sim-to-real transfer. A separate Panda constraint-dynamics mode is experimental and unvalidated.
+- **Self-Contained Bundles:** `scripts/build.mjs` uses `esbuild` to embed all JS, CSS, Web Workers, 3D meshes, and licenses into standalone HTML files (`dist/dof.html` and `dist/robotics-arm-studio.html`). No Node or Python backend required at runtime.
+- **Physics Fidelity:** The default robot arm simulation utilizes velocity-limited kinematic servos with collision proxies; dynamic Panda mode is experimental (Cannon-ES constraint solver), not MuJoCo-certified.
+- **Perception:** ONNX Runtime Web operates client-side via WebAssembly with optional WebGPU acceleration. Large model downloads depend on user network speed and CORS settings.
+- **Honest Metrics:** All charts, tables, and inference outputs derive from real client-side execution. Empty states are explicitly shown when no data exists.
 
-The kitting cell's peripheral bins and fixtures are mostly visual scenery; authored objects have separate collision approximations. Dataset exports have independent Parquet/PNG checks, but stock LeRobot loading and training remain unverified. Phone pairing needs a separate backend and phone client, which this repository does not provide.
+---
 
-### Research and deeper inspection
+## Upstream Attribution & License
 
-Memory tasks are hidden in the default studio. Append `?memory=1` to enable the research interface. Privileged evaluator data is kept separate from memory-policy observations, and debug overlays are excluded from recorded RGB. The general simulator API still exposes privileged state; an external policy-inference bridge is not yet implemented.
-
-- [Architecture and observation boundaries](docs/architecture.md)
-- [Kitting cell assets and Blender authoring](docs/kitting-cell.md)
-- [Validation coverage and dataset checks](docs/validation.md)
-- [Research directions](docs/next-improvements.md)
-
-### License
-
-Copyright © 2026 Arpit Gupta. ARMATURE is licensed under the [GNU General Public License v3.0 only](LICENSE) (`GPL-3.0-only`), without warranty.
-
-Bundled dependencies and robot assets retain their own licenses and attribution requirements. The standalone page includes the application license and [third-party notices](assets/third-party-notices.json).
+- **DOF** is developed by Arpit Gupta as part of the 10-day embodied AI & robotics challenge.
+- **Engine Core:** Built upon the [ARMATURE](https://github.com/arpitg1304/armature) project.
+- **License:** Licensed under the [GNU General Public License v3.0 only](LICENSE) (`GPL-3.0-only`).
+- Bundled third-party libraries (Three.js, Cannon-ES, LeRobot schemas, ONNX Runtime Web) retain their respective upstream licenses as detailed in `assets/third-party-notices.json`.

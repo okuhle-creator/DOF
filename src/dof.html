@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DOF — Degrees of Freedom · Intelligence in Action</title>
+    <meta
+      name="description"
+      content="DOF is a unified AI and robotics experimentation environment for simulating intelligent systems, evaluating algorithms and studying how agents perceive, learn and act."
+    />
+    <meta name="robots" content="index, follow" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="DOF — Degrees of Freedom" />
+    <meta
+      property="og:description"
+      content="A unified AI and robotics experimentation environment. Intelligence in Action."
+    />
+    <meta property="og:type" content="website" />
+    <style>
+      /* DOF_STYLES */
+    </style>
+  </head>
+  <body class="dof-app">
+    <!-- ── App Shell ─────────────────────────────────────── -->
+    <div class="dof-shell" id="dof-shell">
+      <!-- Navigation Rail -->
+      <nav class="dof-rail" id="dof-rail" aria-label="DOF module navigation">
+        <!-- Brand mark -->
+        <div
+          class="dof-rail-brand"
+          id="dof-rail-brand"
+          aria-label="DOF — Degrees of Freedom"
+        >
+          <!-- Logo injected by JS -->
+        </div>
+        <!-- Nav items injected by JS -->
+        <div
+          class="dof-rail-items"
+          id="dof-rail-items"
+          role="tablist"
+          aria-label="Application modules"
+        ></div>
+        <!-- Bottom rail: links -->
+        <div class="dof-rail-foot">
+          <a
+            class="dof-rail-link"
+            href="robotics-arm-studio.html"
+            title="ARMATURE Robot Studio"
+            aria-label="ARMATURE Robot Studio (separate app)"
+          >
+            <svg
+              viewBox="0 0 20 20"
+              fill="none"
+              aria-hidden="true"
+              width="20"
+              height="20"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="6"
+                height="6"
+                rx="1"
+                stroke="currentColor"
+                stroke-width="1.4"
+              />
+              <rect
+                x="11"
+                y="3"
+                width="6"
+                height="6"
+                rx="1"
+                stroke="currentColor"
+                stroke-width="1.4"
+              />
+              <rect
+                x="3"
+                y="11"
+                width="6"
+                height="6"
+                rx="1"
+                stroke="currentColor"
+                stroke-width="1.4"
+              />
+              <path
+                d="M12 14h6M15 11v6"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span class="dof-rail-link-label">Studio</span>
+          </a>
+          <a
+            class="dof-rail-link"
+            href="https://github.com/arpitg1304/armature"
+            target="_blank"
+            rel="noopener"
+            title="Source code on GitHub"
+            aria-label="Source on GitHub"
+          >
+            <svg
+              viewBox="0 0 20 20"
+              fill="none"
+              aria-hidden="true"
+              width="20"
+              height="20"
+            >
+              <path
+                d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.34c-2.22.48-2.69-1.07-2.69-1.07-.36-.92-.88-1.16-.88-1.16-.72-.49.05-.48.05-.48.8.06 1.22.82 1.22.82.71 1.21 1.87.86 2.33.66.07-.51.28-.86.51-1.06-1.77-.2-3.63-.89-3.63-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.69 7.69 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8.013 8.013 0 0 0 18 10c0-4.42-3.58-8-8-8z"
+                fill="currentColor"
+              />
+            </svg>
+            <span class="dof-rail-link-label">GitHub</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Main Content Area -->
+      <div class="dof-content" id="dof-content" role="main">
+        <!-- Module panels (each is a full-height container, toggled by JS) -->
+        <div
+          class="dof-panel"
+          id="panel-simulation"
+          data-module="simulation"
+          hidden
+        ></div>
+        <div
+          class="dof-panel"
+          id="panel-planning"
+          data-module="planning"
+          hidden
+        ></div>
+        <div
+          class="dof-panel"
+          id="panel-agent"
+          data-module="agent"
+          hidden
+        ></div>
+        <div
+          class="dof-panel"
+          id="panel-perception"
+          data-module="perception"
+          hidden
+        ></div>
+        <div
+          class="dof-panel"
+          id="panel-experiments"
+          data-module="experiments"
+          hidden
+        ></div>
+        <div
+          class="dof-panel"
+          id="panel-analytics"
+          data-module="analytics"
+          hidden
+        ></div>
+        <div
+          class="dof-panel"
+          id="panel-registry"
+          data-module="registry"
+          hidden
+        ></div>
+        <div
+          class="dof-panel"
+          id="panel-tutorials"
+          data-module="tutorials"
+          hidden
+        ></div>
+      </div>
+
+      <!-- Header bar (title + status) -->
+      <header
+        class="dof-header"
+        id="dof-header"
+        aria-label="DOF application header"
+      >
+        <div class="dof-header-brand">
+          <span class="dof-header-name">DOF</span>
+          <span class="dof-header-tagline">Degrees of Freedom</span>
+        </div>
+        <div
+          class="dof-header-module"
+          id="dof-header-module"
+          aria-live="polite"
+        >
+          Intelligence in Action
+        </div>
+        <div class="dof-header-actions">
+          <span
+            class="dof-header-status"
+            id="dof-header-status"
+            role="status"
+            aria-live="polite"
+          ></span>
+        </div>
+      </header>
+    </div>
+
+    <!-- Third-party notices (injected at build time) -->
+    <script type="application/json" id="dof-notices">
+      DOF_NOTICES
+    </script>
+
+    <!-- Three.js (needed by simulation module) -->
+    <script>
+      /* DOF_THREE */
+    </script>
+
+    <!-- DOF Application -->
+    <script>
+      /* DOF_APP */
+    </script>
+  </body>
+</html>

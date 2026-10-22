@@ -1,8 +1,10 @@
 {
-  "name": "armature",
+  "name": "dof-ai-lab",
   "version": "0.1.0",
-  "description": "Standalone browser robot-learning and memory experiment simulator",
+  "description": "DOF (Degrees of Freedom) — A unified browser-first AI and robotics experimentation platform",
   "scripts": {
+    "start": "node scripts/build.mjs && node scripts/serve.mjs",
+    "serve": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "test": "node tests/source.mjs && node tests/protocol.mjs && node tests/features.mjs && node tests/worker.mjs && node tests/kitting-physics.mjs && node tests/authored.mjs",
     "test:browser": "node tests/browser.mjs",
