@@ -3,12 +3,12 @@
 
 > **A unified AI and robotics experimentation platform for simulating intelligent systems, evaluating algorithms, and studying how agents perceive, learn, and act.**
 
-[![Deploy DOF to GitHub Pages](https://github.com/arpitg1304/armature/actions/workflows/deploy.yml/badge.svg)](https://github.com/arpitg1304/armature/actions/workflows/deploy.yml)
+[![Deploy DOF to GitHub Pages](https://github.com/okuhle-creator/DOF/actions/workflows/deploy.yml/badge.svg)](https://github.com/okuhle-creator/DOF/actions/workflows/deploy.yml)
 [![License: GPL-3.0-only](https://img.shields.io/badge/License-GPL--3.0--only-blue.svg)](LICENSE)
 
-DOF (Degrees of Freedom) is a browser-first, deep-tech software platform for embodied AI, robotics simulation, machine learning, and autonomous systems. Built on the open-source **ARMATURE** robotics engine, DOF integrates 3D robotic arm simulation, 2D motion planning, reinforcement learning, browser-based neural perception, experiment management, and real-data analytics into a single self-contained application.
+DOF (Degrees of Freedom) is a browser-first, deep-tech software platform for embodied AI, robotics simulation, machine learning, and autonomous systems. DOF integrates 3D robotic arm simulation, 2D motion planning, reinforcement learning, browser-based neural perception, experiment management, and real-data analytics into a single self-contained application.
 
-**[🚀 Launch Live Platform](https://arpitg1304.github.io/armature/)** · **[🤖 Simulation Studio](https://arpitg1304.github.io/armature/robotics-arm-studio.html)** · [Architecture](docs/architecture.md) · [Validation](docs/validation.md)
+**[🚀 Launch Live Platform](https://okuhle-creator.github.io/DOF/)** · **[🤖 Simulation Studio](https://okuhle-creator.github.io/DOF/robotics-arm-studio.html)** · [Architecture](docs/architecture.md) · [Validation](docs/validation.md)
 
 ---
 
@@ -52,8 +52,8 @@ Requires **Node.js 22+**.
 
 ```sh
 # 1. Clone repository
-git clone https://github.com/arpitg1304/armature.git
-cd armature
+git clone https://github.com/okuhle-creator/DOF.git
+cd DOF
 
 # 2. Install dependencies
 npm ci
@@ -108,9 +108,8 @@ npm run serve         # Run local HTTP preview server without rebuilding
 
 ---
 
-## Upstream Attribution & License
+## License & Attribution
 
-- **DOF** is developed by Arpit Gupta as part of the 10-day embodied AI & robotics challenge.
-- **Engine Core:** Built upon the [ARMATURE](https://github.com/arpitg1304/armature) project.
+- **DOF** (Degrees of Freedom) — A unified browser-first AI and robotics experimentation platform.
 - **License:** Licensed under the [GNU General Public License v3.0 only](LICENSE) (`GPL-3.0-only`).
 - Bundled third-party libraries (Three.js, Cannon-ES, LeRobot schemas, ONNX Runtime Web) retain their respective upstream licenses as detailed in `assets/third-party-notices.json`.

@@ -10,6 +10,12 @@ const studioHtml = await readFile("_site/robotics-arm-studio.html");
 const server = createServer((req, res) => {
   const path = req.url.split("?")[0];
   if (
+    path === "/" ||
+    path === "/index.html" ||
+    path === "/dof.html" ||
+    path === "/DOF/" ||
+    path === "/DOF/index.html" ||
+    path === "/DOF/dof.html" ||
     path === "/armature/" ||
     path === "/armature/index.html" ||
     path === "/armature/dof.html"
@@ -18,7 +24,11 @@ const server = createServer((req, res) => {
     res.end(dofHtml);
     return;
   }
-  if (path === "/armature/robotics-arm-studio.html") {
+  if (
+    path === "/robotics-arm-studio.html" ||
+    path === "/DOF/robotics-arm-studio.html" ||
+    path === "/armature/robotics-arm-studio.html"
+  ) {
     res.setHeader("Content-Type", "text/html");
     res.end(studioHtml);
     return;
@@ -45,7 +55,7 @@ try {
   });
 
   // 1. Test DOF Platform landing page
-  await page.goto(origin + "/armature/");
+  await page.goto(origin + "/DOF/");
   await page.waitForSelector(".dof-shell");
   const title = await page.title();
   assert.ok(title.includes("DOF"), `Title must mention DOF: ${title}`);
@@ -87,7 +97,7 @@ try {
   // 2. Test Studio page
   errors.length = 0;
   requests.length = 0;
-  await page.goto(origin + "/armature/robotics-arm-studio.html");
+  await page.goto(origin + "/DOF/robotics-arm-studio.html");
   await page.waitForFunction(() => window.armature?.builder);
   assert.equal(await page.locator('#task option[value^="memory_"]').count(), 0);
   assert.equal(await page.evaluate(() => !!armature.memory), false);
@@ -100,8 +110,8 @@ try {
   });
   assert.ok(result);
   assert.deepEqual(errors, []);
-  assert.deepEqual(requests, [origin + "/armature/robotics-arm-studio.html"]);
-  await page.goto(origin + "/armature/robotics-arm-studio.html?memory=1");
+  assert.deepEqual(requests, [origin + "/DOF/robotics-arm-studio.html"]);
+  await page.goto(origin + "/DOF/robotics-arm-studio.html?memory=1");
   await page.waitForFunction(() => !!window.armature?.memory);
   assert.equal(await page.locator('#task option[value^="memory_"]').count(), 4);
   assert.deepEqual(errors, []);

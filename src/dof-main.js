@@ -2,8 +2,8 @@
 // DOF — Degrees of Freedom
 // Application entry point: initialises the navigation rail and mounts all modules.
 //
-// License: GPL-3.0-only (C) 2026 Arpit Gupta
-// This file is part of the DOF platform, built on the ARMATURE project.
+// License: GPL-3.0-only
+// This file is part of the DOF platform.
 
 import { createNav, DEFAULT_MODULES } from "./dof/nav.js";
 import { DOF_LOGO_SVG } from "./dof/logo.js";

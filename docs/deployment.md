@@ -1,9 +1,9 @@
 # GitHub Pages deployment
 
-Repository: https://github.com/arpitg1304/armature
-Site: https://arpitg1304.github.io/armature/
+Repository: https://github.com/okuhle-creator/DOF
+Site: https://okuhle-creator.github.io/DOF/
 
-The workflow in `.github/workflows/pages.yml` runs the source/protocol/physics tests, builds the standalone page, and boots it in Chromium under a project URL path. Pull requests run the same checks without deploying. Successful pushes to `main` deploy the `_site` artifact through GitHub Pages; the workflow can also be run manually on `main`.
+The workflow in `.github/workflows/deploy.yml` runs the source/protocol/physics tests, builds the standalone page, and boots it in Chromium under a project URL path. Pull requests run the same checks without deploying. Successful pushes to `main` deploy the `_site` artifact through GitHub Pages; the workflow can also be run manually on `main`.
 
 In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. No deployment token or application server is required. The workflow uses GitHub's short-lived token with Pages and identity permissions confined to the deployment job. See [GitHub's custom workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 

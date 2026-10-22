@@ -37,8 +37,8 @@ const app = await build({
 const escapeScript = (s) => s.replace(/<\/script/gi, "<\\/script");
 let html = await fs.readFile("src/index.html", "utf8");
 const notices = {
-  ARMATURE:
-    "Copyright \u00a9 2026 Arpit Gupta. Licensed under GPL-3.0-only.\nSource: https://github.com/arpitg1304/armature\n\n" +
+  STUDIO:
+    "Licensed under GPL-3.0-only.\n\n" +
     (await fs.readFile("LICENSE", "utf8")),
   ...JSON.parse(await fs.readFile("assets/third-party-notices.json", "utf8")),
 };
@@ -75,8 +75,7 @@ const dofApp = await build({
 
 const dofNotices = {
   DOF:
-    "DOF \u2014 Degrees of Freedom. Copyright \u00a9 2026 Arpit Gupta. Licensed under GPL-3.0-only.\n" +
-    "Built on ARMATURE. Source: https://github.com/arpitg1304/armature\n\n" +
+    "DOF \u2014 Degrees of Freedom. Licensed under GPL-3.0-only.\n\n" +
     (await fs.readFile("LICENSE", "utf8")),
   ...JSON.parse(await fs.readFile("assets/third-party-notices.json", "utf8")),
 };

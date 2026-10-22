@@ -9,4 +9,4 @@ await copyFile(
 console.log("GitHub Pages artifacts in _site/:");
 console.log("  - index.html (DOF platform)");
 console.log("  - dof.html (DOF platform)");
-console.log("  - robotics-arm-studio.html (ARMATURE robot studio)");
+console.log("  - robotics-arm-studio.html (Robot Studio)");
